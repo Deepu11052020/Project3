@@ -68,7 +68,22 @@ object Main {
     //Hive
     superMarketdf_cleaned.write.mode("overwrite").saveAsTable("ukusmar.superMarket1")
     branchdf_cleaned.write.mode("overwrite").saveAsTable("ukusmar.Branch1")
-    productdf_cleaned.write.mode("overwrite").saveAsTable("ukusmar.ProductLine1")
+    productdf_cleaned.write.mode("overwrite").saveAsTable("ukusmar.selectProductLine1")
     println("tables loaded into Hive")
+
+    //Postgres SQL
+    superMarketdf_cleaned.write.format("jdbc").option("url", "jdbc:postgresql://ec2-3-9-191-104.eu-west-2.compute.amazonaws.com:5432/testdb")
+      .option("dbtable", "superMarket").option("driver", "org.postgresql.Driver").option("user", "consultants")
+      .option("password", "WelcomeItc@2022").mode("overwrite").save()
+    branchdf_cleaned.write.format("jdbc").option("url", "jdbc:postgresql://ec2-3-9-191-104.eu-west-2.compute.amazonaws.com:5432/testdb")
+      .option("dbtable", "branch").option("driver", "org.postgresql.Driver").option("user", "consultants")
+      .option("password", "WelcomeItc@2022").mode("overwrite").save()
+    productdf_cleaned.write.format("jdbc").option("url", "jdbc:postgresql://ec2-3-9-191-104.eu-west-2.compute.amazonaws.com:5432/testdb")
+      .option("dbtable", "productLine").option("driver", "org.postgresql.Driver").option("user", "consultants")
+      .option("password", "WelcomeItc@2022").mode("overwrite").save()
+
+      println("tables loaded into DB")
+
+
   }
 }
