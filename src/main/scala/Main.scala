@@ -84,6 +84,21 @@ object Main {
 
       println("tables loaded into DB")
 
+/*
+//Mysql
+val url = "jdbc:mysql://localhost:3306/testdb"
+    val username = "root"
+    val password = "Kittians@01"
+    val connectionProperties = new Properties()
+    connectionProperties.put("user", username)
+    connectionProperties.put("password", password)
+    val superMarket = "superMarket"
+    val branch ="branch"
+    val ProductLine ="ProductLine"
+    superMarketdf_cleaned.write.jdbc(url, superMarket, connectionProperties)
+    branchdf_cleaned.write.jdbc(url,branch,connectionProperties)
+    productdf_cleaned.write.jdbc(url, ProductLine, connectionProperties)
+    */
 
   }
 }
