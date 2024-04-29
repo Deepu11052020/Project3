@@ -63,6 +63,12 @@ object Main {
     superMarketdf_cleaned.coalesce(1).write.option("header", true).mode("overwrite").csv(args(1))
     branchdf_cleaned.coalesce(1).write.option("header", true).mode("overwrite").csv(args(3))
     productdf_cleaned.coalesce(1).write.option("header", true).mode("overwrite").csv(args(5))
+    println("tables loaded into HDFS")
 
+    //Hive
+    superMarketdf_cleaned.write.mode("overwrite").saveAsTable("ukusmar.superMarket1")
+    branchdf_cleaned.write.mode("overwrite").saveAsTable("ukusmar.Branch1")
+    productdf_cleaned.write.mode("overwrite").saveAsTable("ukusmar.ProductLine1")
+    println("tables loaded into Hive")
   }
 }
