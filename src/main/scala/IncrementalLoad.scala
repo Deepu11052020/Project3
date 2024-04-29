@@ -15,7 +15,7 @@ object IncrementalLoad extends App {
     .getOrCreate()
 
   // Define schema for the supermarket sales data
-  val superSchema = "InvoiceID String, BranchId Int, Customer_type String, Gender String,Product_line String, Unit_price Float, Quantity Integer, Tax_5_percent Float,  Total Float, Date1 String, Time1 String, Payment String, cogs Float,gross_margin_per Float, gross_income Float, Rating Float"
+  val superSchema = "InvoiceID String, BranchId Int, Customer_type String, Gender String,Product_line_Id String, Unit_price Float, Quantity Integer, Tax_5_percent Float,  Total Float, Date1 String, Time1 String, Payment String, cogs Float,gross_margin_per Float, gross_income Float, Rating Float"
   val superdf = spark.read
     .option("header", true)
     .schema(superSchema)
